@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/JWally/_ui/issues"
   },
-  "homepage": "https://github.com/JWally/_ui"
+  "homepage": "https://github.com/JWally/_ui",
+  "devDependencies": {
+    "grunt": "~0.4.5"
+  }
 }
