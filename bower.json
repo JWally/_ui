@@ -1,0 +1,33 @@
+{
+  "name": "_ui",
+  "version": "0.0.0",
+  "homepage": "https://github.com/JWally/_ui",
+  "authors": [
+    "JustinWolcott <Justin.Wolcott@bbvacompass.com>"
+  ],
+  "description": "User interface set-up",
+  "main": "none",
+  "keywords": [
+    "UI",
+    "Setup"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "lodash": "~2.4.1",
+    "backbone": "~1.1.2",
+    "requirejs": "~2.1.13",
+    "hogan": "~3.0.0",
+    "almond": "~0.2.9",
+    "bootstrap": "~3.1.1",
+	"pubsub": "https://github.com/JWally/bbPubSub/tarball/master" 
+  }
+}

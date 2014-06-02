@@ -27,6 +27,8 @@
     "grunt-jsbeautifier": "*",
     "connect": "*",
     "serve-static": "*",
-    "jquery": "*"
+    "bower": "~1.3.3",
+    "grunt-hogan": "~0.2.2-2",
+    "grunt-contrib-requirejs": "~0.4.4"
   }
 }
