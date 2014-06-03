@@ -84,18 +84,6 @@ module.exports = function (grunt) {
                         ".html", "");
                 }
             }
-        },
-        // Options for building out the requirejs into
-        // a single file
-        "requirejs": {
-            "compile": {
-                "options": {
-                    "baseUrl": "src",
-                    //                    "mainConfigFile": "src/app.build.js",
-                    "name": "main",
-                    "out": "main.min.js"
-                }
-            }
         }
     });
     grunt.loadNpmTasks("grunt-contrib-requirejs");
@@ -105,7 +93,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.registerTask("default", ["jsbeautifier:default",
         "jshint",
-        "hogan:modTarget",
-        "requirejs"
+        "hogan:modTarget"
     ]);
 }
