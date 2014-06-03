@@ -1,7 +1,4 @@
 ({
-    "baseUrl": "../src",
-    "out": "derp.js",
-    "optimizeCss": "standard",
     "paths": {
         "jquery": "bower_components/jquery/dist/jquery.min",
         "jquery.bootstrap": "bower_components/bootstrap/dist/js/bootstrap.min",
@@ -9,7 +6,7 @@
         "backbone": "bower_components/backbone/backbone",
         "hogan": "bower_components/hogan/web/builds/2.0.0/hogan-2.0.0.amd",
         "templates": "template/all",
-        "setup": "./setup",
+        "setup": "setup",
         "pubsub": "bower_components/pubsub/pubsub"
     },
     "shim": {

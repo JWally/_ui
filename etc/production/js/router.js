@@ -1,1 +1,0 @@
-define(["jquery","underscore","backbone","views/index/index"],function(e,t,n,r){var i=n.Router.extend({routes:{"":"index"}}),s={},o=function(){var e=new i;e.on("route:index",function(e){s.homeView||(s.homeView=new r),s.homeView.render()}),n.history.start({pushState:!1})};return{initialize:o}});

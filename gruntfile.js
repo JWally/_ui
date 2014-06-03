@@ -4,9 +4,10 @@ module.exports = function (grunt) {
         "jshint": {
             "files": [
                 "src/**/*.js",
-                "!src/js/template/all.js",
-                "!src/main.js",
-                "!src/js/main.js"
+                "!src/bower_components/**",
+                "!src/template/all.js",
+                "!src/app.build.js",
+                "!src/main.min.js"
             ],
             "options": {
                 "quotmark": "double",
@@ -75,25 +76,36 @@ module.exports = function (grunt) {
             // Compile all html templates into `brother.js`,
             // naming it like this `parent folder/file name`
             "modTarget": {
-                "templates": "src/js/template/**/*.html",
-                "output": "src/js/template/all.js",
+                "templates": "src/template/**/*.html",
+                "output": "src/template/all.js",
                 "binderName": "amd",
                 "nameFunc": function (fileName) {
                     return fileName.replace(/^.*_html\//gi, "").replace(
                         ".html", "");
                 }
             }
-        }
+        },
         // Options for building out the requirejs into
         // a single file
-
+        "requirejs": {
+            "compile": {
+                "options": {
+                    "baseUrl": "src",
+                    //                    "mainConfigFile": "src/app.build.js",
+                    "name": "main",
+                    "out": "main.min.js"
+                }
+            }
+        }
     });
     grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.loadNpmTasks('grunt-hogan');
     grunt.loadNpmTasks("grunt-jsbeautifier");
     grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.registerTask("default", ["jsbeautifier:default",
         "jshint",
-        "hogan:modTarget"
+        "hogan:modTarget",
+        "requirejs"
     ]);
 }

@@ -1,1 +1,0 @@
-define([],function(){var e={baseUrl:"http://cpucnd1277xr9.compassbnk.com:3003/"};return e});

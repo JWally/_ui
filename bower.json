@@ -1,6 +1,7 @@
 {
   "name": "_ui",
   "version": "0.0.0",
+  "directory": "src/bower_components",
   "homepage": "https://github.com/JWally/_ui",
   "authors": [
     "JustinWolcott <Justin.Wolcott@bbvacompass.com>"

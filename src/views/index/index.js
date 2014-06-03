@@ -11,7 +11,7 @@ define([
 
         render: function () {
             var rslt = templates[
-                "src/js/template/index/index"]();
+                "src/template/index/index"]();
             this.$el.html(rslt);
         }
 

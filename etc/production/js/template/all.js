@@ -1,1 +1,0 @@
-define(["hogan"],function(e){var t={"src/js/template/index/index":new e.Template(function(e,t,n){var r=this;return r.b(n=n||""),r.b("<h1>HELLO WORLD!</h1>"),r.fl()})},n=function(e){var n=t[e];return function(e,r,i){return n.render(e,r||t,i)}};return{"src/js/template/index/index":n("src/js/template/index/index")}});
