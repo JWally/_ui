@@ -1,6 +1,7 @@
 ({
     "baseUrl": "../src",
-    "name": "main",
+    "include": "main",
+    "name": "../bower_components/almond/almond",
     "out": "../src/main.min.js",
     "optimizeCss": "standard",
     "paths": {
