@@ -84,15 +84,21 @@ module.exports = function (grunt) {
                         ".html", "");
                 }
             }
+        },
+        "shell": {
+            "minify": {
+                "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js"
+            }
         }
     });
     grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.loadNpmTasks('grunt-hogan');
     grunt.loadNpmTasks("grunt-jsbeautifier");
     grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.loadNpmTasks("grunt-contrib-requirejs");
+    grunt.loadNpmTasks("grunt-shell");
     grunt.registerTask("default", ["jsbeautifier:default",
         "jshint",
-        "hogan:modTarget"
+        "hogan:modTarget",
+        "shell:minify"
     ]);
 }
