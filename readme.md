@@ -45,8 +45,34 @@ To build your project out in `prod`, do the following in the shell
 $grunt prod
 ```
 This option does the following
+
 1. Concatenates *and* minifies all JavaScript files into 1 (src/main.min.js)
 2. Concatenates *and* minifies all SASS files into 1 css (src/main.min.css)
 3. gzip's copies of the prod files into the `prod` directory
 
+This option squeezes everything down as small as possible, and in the case of the `prod` directory allows your project to be hosted on a CDN with no server. On the downside, because everything is minified, concatenated, and scrambled; debugging and other development related tasks become nightmarish. Thus, we get our second grunt option...`dev`
+
+### dev
+To build your project out in `prod`, do the following in the shell
+```shell
+$grunt dev
+```
+This option does the following
+
+1. Concatenates ~~*and* minifies~~ all JavaScript files into 1 (src/main.min.js)
+2. Concatenates ~~*and* minifies~~ all SASS files into 1 css (src/main.min.css)
+3. ~~gzip's copies of the prod files into the `prod` directory~~
+
+FYI (and this probably needs a bigger section header); all changes have to be processed through grunt. This is because `src/index.html` is aiming at 1 javascript file, and 1 local css file; which are build through grunt. If you're changing things, and they're not changing in your browser, check here first.
+
+## Super!...How do I see what I'm working on?
+Not much point in developing a web ~~site~~ application if you can't see what's going on. Fortunately, because we're running on node, we can use some libraries geared towards it's server applications to build out a skeleton server. This is awesome because it means we don't have to worry about configuring apache/nginx/lighthttpd/etc. Instead, do the following in a seperate shell:
+
+```shell
+$node etc/server.js
+```
+
+This should open up a static file server at localhost:1337. If you want to see the site you're working on, aim your browser at [localhost:1337/src](localhost:1337/src). Any changes you make to your application (again, through grunt'n) ought to show up immediately.
+
+TODO: Template Generation
 
