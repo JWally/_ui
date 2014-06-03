@@ -67,15 +67,9 @@ module.exports = function (grunt) {
             }
         },
         "hogan": {
-            // Build our custom hogan maker
-            "awesome": {
-                "templates": "etc/grunt-hogan/view/awesome.hogan",
-                "output": "etc/grunt-hogan/binder/awesome.js",
-                "binderName": "bootstrap"
-            },
-            // Compile all html templates into `brother.js`,
+            // Compile all html templates into `all.js`,
             // naming it like this `parent folder/file name`
-            "modTarget": {
+            "web": {
                 "templates": "src/template/**/*.html",
                 "output": "src/template/all.js",
                 "binderName": "amd",
@@ -88,17 +82,41 @@ module.exports = function (grunt) {
         "shell": {
             "minify": {
                 "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js"
+            },
+            "prod": {
+                "command": "rm -rf prod",
+                "command": "mkdir prod",
+                "command": "gzip -9 -c src/index.html > prod/index.html",
+                "command": "gzip -9 -c src/main.min.js > prod/main.min.js",
+                "command": "gzip -9 -c src/main.min.css > prod/main.min.css"
+            },
+            "poof": {
+                "command": function (d) {
+                    console.log(d);
+                    return "echo hello";
+                }
+            }
+        },
+        "sass": {
+            "dist": {
+                "options": {
+                    "outputStyle": "compressed",
+                },
+                "files": {
+                    "src/main.min.css": "src/sass/main.scss"
+                }
             }
         }
     });
-    grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.loadNpmTasks('grunt-hogan');
     grunt.loadNpmTasks("grunt-jsbeautifier");
     grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.loadNpmTasks("grunt-sass");
     grunt.loadNpmTasks("grunt-shell");
     grunt.registerTask("default", ["jsbeautifier:default",
         "jshint",
-        "hogan:modTarget",
+        "hogan:web",
+        "sass:dist",
         "shell:minify"
     ]);
 }
