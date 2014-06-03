@@ -15,18 +15,12 @@ To make my projects as easy and repeatable as possible, I'm putting a developmen
 Here's what I'm using for my projects-du-jour
 
 ### Front - End
+
 1. [Backbone.js](backbonejs.org) - MV.* Front End JavaScript Library
 2. [RequireJS](requirejs.org) - JavaScript file loader which allows modularity
 3. [Twitter - Bootstrap](getbootstrap.com) - Its reputation precedes it...such wow!
 
-
-1. [Node.js](https://github.com/joyent/node) - javaScript 
-
+### Back - End
+1. [Node.js](https://github.com/joyent/node) - javaScript
 3. grunt - To build and compress everything
 
->Here are some instructions on how to use:
-
-1. Install Node
-2. npm install
-3. bower install
-4. bomb.sh
