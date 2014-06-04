@@ -80,28 +80,28 @@ module.exports = function (grunt) {
             }
         },
         "shell": {
-            "minify": {
-                "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js"
-            },
             "prod": {
+                "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js",
                 "command": "rm -rf prod",
                 "command": "mkdir prod",
                 "command": "gzip -9 -c src/index.html > prod/index.html",
                 "command": "gzip -9 -c src/main.min.js > prod/main.min.js",
                 "command": "gzip -9 -c src/main.min.css > prod/main.min.css"
             },
-            "poof": {
-                "command": function (d) {
-                    console.log(d);
-                    return "echo hello";
-                }
+            "dev": {
+                "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js optimize=none"
             }
         },
         "sass": {
-            "dist": {
+            "prod": {
                 "options": {
                     "outputStyle": "compressed",
                 },
+                "files": {
+                    "src/main.min.css": "src/sass/main.scss"
+                }
+            },
+            "dev": {
                 "files": {
                     "src/main.min.css": "src/sass/main.scss"
                 }
@@ -113,10 +113,25 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-sass");
     grunt.loadNpmTasks("grunt-shell");
-    grunt.registerTask("default", ["jsbeautifier:default",
+
+    grunt.registerTask("prod", [
+        "jsbeautifier:default",
         "jshint",
         "hogan:web",
-        "sass:dist",
-        "shell:minify"
+        "sass:prod",
+        "shell:prod"
     ]);
+
+    grunt.registerTask("dev", [
+        "jsbeautifier:default",
+        "jshint",
+        "hogan:web",
+        "sass:dev",
+        "shell:dev"
+    ]);
+
+
+
+
+
 }
