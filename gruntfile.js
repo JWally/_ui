@@ -84,12 +84,14 @@ module.exports = function (grunt) {
         },
         "shell": {
             "prod": {
-                "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js",
-                "command": "rm -rf prod",
-                "command": "mkdir prod",
-                "command": "gzip -9 -c src/index.html > prod/index.html",
-                "command": "gzip -9 -c src/main.min.js > prod/main.min.js",
-                "command": "gzip -9 -c src/main.min.css > prod/main.min.css"
+                "command": [
+                    "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js",
+                    "rm -rf prod",
+                    "mkdir prod",
+                    "gzip -9 -c src/index.html > prod/index.html",
+                    "gzip -9 -c src/main.min.js > prod/main.min.js",
+                    "gzip -9 -c src/main.min.css > prod/main.min.css"
+                ].join("&&")
             },
             "dev": {
                 "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js optimize=none"
