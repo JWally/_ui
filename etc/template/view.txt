@@ -1,0 +1,23 @@
+/*File: {{file}}*/
+/*global define*/
+
+define([
+    "jquery",
+    "underscore",
+    "backbone",
+    "templates"
+], function ($, _, Backbone, templates) {
+
+    "use strict";
+    var {{name}} = Backbone.View.extend({
+
+        el: $("#somewhere"),
+
+        render: function () {
+            var rslt = templates["something"]({data: true});
+            this.$el.html(rslt);
+        }
+
+    });
+    return {{name}};
+});

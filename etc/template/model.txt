@@ -1,0 +1,19 @@
+/*File: {{file}}*/
+/*global define*/
+
+define([
+	"jquery",
+    "underscore",
+    "backbone",
+    "setup"
+], function ($, _, Backbone, Setup) {
+    "use strict";
+
+    var {{name}} = Backbone.Model.extend({
+        "idAttribute": "_id",
+        "initialize": function () {
+
+        }
+    });
+    return {{name}};
+});

@@ -1,0 +1,25 @@
+/*File: {{file}}*/
+/*global define*/
+
+define([
+    "jquery",
+    "underscore",
+    "backbone",
+    "setup",
+    "pubsub",
+    "path/to/model"
+], function ($, _, Backbone, Setup, pubsub, model) {
+
+    "use strict";
+    var {{name}} = Backbone.Collection.extend({
+
+        "url": Setup.baseUrl + "some path/",
+        "model": model,
+
+        ////////////////////////////////////////////////////////
+        initialize: function () {
+
+        }
+    });
+    return {{name}};
+});
