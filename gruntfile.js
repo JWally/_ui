@@ -1,3 +1,6 @@
+var hogan = require("hogan.js");
+
+
 module.exports = function (grunt) {
     grunt.initConfig({
         "pkg": "package.json",
@@ -130,7 +133,10 @@ module.exports = function (grunt) {
         "shell:dev"
     ]);
 
+    grunt.task.registerTask("foo", "Set Up for templating",
+        function (arg1, arg2) {
 
+        });
 
 
 
