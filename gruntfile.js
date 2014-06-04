@@ -1,6 +1,3 @@
-var hogan = require("hogan.js");
-
-
 module.exports = function (grunt) {
     grunt.initConfig({
         "pkg": "package.json",
@@ -80,6 +77,11 @@ module.exports = function (grunt) {
                     return fileName.replace(/^.*_html\//gi, "").replace(
                         ".html", "");
                 }
+            },
+            "heros": {
+                "templates": "etc/template/**/*.txt",
+                "output": "etc/template/all.js",
+                "binderName": "nodejs",
             }
         },
         "shell": {
@@ -136,8 +138,12 @@ module.exports = function (grunt) {
     ]);
 
     grunt.task.registerTask("foo", "Set Up for templating",
-        function (arg1, arg2) {
-
+        function (template, name, path) {
+            var templates = require("./etc/template/all"),
+                newFile = (path + "/" + name + ".js");              
+                newFile = newFile.substr(__dirname.length +1, newFile.length - __dirname.length - 1);
+               
+            grunt.file.write(newFile, templates[template]({name: name, file: newFile}))
         });
 
 
