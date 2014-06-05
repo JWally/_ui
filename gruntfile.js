@@ -140,10 +140,14 @@ module.exports = function (grunt) {
     grunt.task.registerTask("foo", "Set Up for templating",
         function (template, name, path) {
             var templates = require("./etc/template/all"),
-                newFile = (path + "/" + name + ".js");              
-                newFile = newFile.substr(__dirname.length +1, newFile.length - __dirname.length - 1);
-               
-            grunt.file.write(newFile, templates[template]({name: name, file: newFile}))
+                newFile = (path + "/" + name + ".js");
+            newFile = newFile.substr(__dirname.length + 1, newFile.length -
+                __dirname.length - 1);
+
+            grunt.file.write(newFile, templates[template]({
+                name: name,
+                file: newFile
+            }))
         });
 
 
