@@ -137,7 +137,7 @@ module.exports = function (grunt) {
         "shell:dev"
     ]);
 
-    grunt.task.registerTask("foo", "Set Up for templating",
+    grunt.task.registerTask("clone", "Set Up for templating",
         function (template, name, path) {
             var templates = require("./etc/template/all"),
                 newFile = (path + "/" + name + ".js");
