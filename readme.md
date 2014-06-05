@@ -75,5 +75,22 @@ $node etc/server.js
 
 This should open up a static file server at localhost:1337. If you want to see the site you're working on, aim your browser at [localhost:1337/src](localhost:1337/src). Any changes you make to your application (again, through grunt'n) ought to show up immediately.
 
-TODO: Template Generation
+## Template Cloning
+Given that we're dealing with AMD and backbone, we're probably going to end up re-using the same little snippets of code over and over again...
+
+To make this a little less tedious, the grunt file has a pretty simple (see modifiable) function in it that allows you to clone templates. Because it's so maliable (see also undocumented / poorly implemented) I'm not going to spend a ton of time on it. Essentially, the steps to implement go like this:
+
+1. Create a hogan style template (ending in txt) in `etc/templates`
+2. In a shell, run `grunt hogan:hero` (get it?) which preps the templates
+3. cd into a directory where you want to clone a template
+4. In shell, type out `grunt clone:{{template}}:{{what to name it}}:{{path}}`
+
+Where `{{template}}` is the name of the file of the template you created; `{{what to name it}}` is what you want to name the new file you're creating; and `{{path}}` is the directory you want the file to go into, relative to the root of your project (sounds harder than it really is...watch this!).
+
+So say I've got a template named `hello.txt`; I could cd into `where/it/goes` and shell the following: 
+```shell
+grunt clone:hello:something:`pwd`
+```
+
+This clones the template hello, renaming it `something.js` in the directory where the shell currently is.
 
