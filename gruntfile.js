@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         "pkg": "package.json",
+        "aws": grunt.file.readJSON("/home/justinwolcott/aws.json"),
         "jshint": {
             "files": [
                 "src/**/*.js",
@@ -113,6 +114,28 @@ module.exports = function (grunt) {
                     "src/main.min.css": "src/sass/main.scss"
                 }
             }
+        },
+        "s3": {
+            "options": {
+                "key": "<%= aws.key %>",
+                "secret": "<%= aws.secret %>",
+                "bucket": "grunter",
+                "access": "public-read",
+                "headers": {
+                    // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
+                    "Cache-Control": "max-age=630720000, public",
+                    "Expires": new Date(Date.now() + 63072000000).toUTCString(),
+                    "Content-Encoding": "gzip"
+                }
+            },
+            "test": {
+                "upload": [
+                    {
+                        "src": "prod/**.*",
+                        "dest": "/"
+                    }
+                ]
+            }
         }
     });
     grunt.loadNpmTasks('grunt-hogan');
@@ -120,6 +143,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-sass");
     grunt.loadNpmTasks("grunt-shell");
+    grunt.loadNpmTasks("grunt-s3");
 
     grunt.registerTask("prod", [
         "jsbeautifier:default",
