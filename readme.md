@@ -66,6 +66,12 @@ This option does the following
 
 FYI (and this probably needs a bigger section header); all changes have to be processed through grunt. This is because `src/index.html` is aiming at 1 javascript file, and 1 local css file; which are build through grunt. If you're changing things, and they're not changing in your browser, check here first.
 
+### s3
+Not 100% sure where to put this or how to incorporate, but wanted to have it in here. What this option will do is move all of the files from the `prod` folder into a folder on Amazon Web Services `s3`. What's cool about this option is that you can link your s3 bucket to Amazon's cloudfront services and have your minified / gzipped files sitting on a CDN.
+
+This requires a 
+
+
 ## Super!...How do I see what I'm working on?
 Not much point in developing a web ~~site~~ application if you can't see what's going on. Fortunately, because we're running on node, we can use some libraries geared towards it's server applications to build out a skeleton server. This is awesome because it means we don't have to worry about configuring apache/nginx/lighthttpd/etc. Instead, do the following in a seperate shell:
 
