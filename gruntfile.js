@@ -1,7 +1,17 @@
 module.exports = function (grunt) {
+    // Initialize this because it tells us where
+    // our credentials file is stored...
+    var pkg = grunt.file.readJSON("package.json");
+
+    // If the file listed here exists, load it into the
+    // `aws` variable
+    if (grunt.file.exists(pkg.aws.credentials)) {
+        aws = grunt.file.readJSON(pkg.aws.credentials);
+    }
+
     grunt.initConfig({
-        "pkg": "package.json",
-        "aws": grunt.file.readJSON("/home/justinwolcott/aws.json"),
+        "pkg": pkg,
+        "aws": aws,
         "jshint": {
             "files": [
                 "src/**/*.js",
@@ -119,22 +129,21 @@ module.exports = function (grunt) {
             "options": {
                 "key": "<%= aws.key %>",
                 "secret": "<%= aws.secret %>",
-                "bucket": "grunter",
+                "bucket": "NOPER",
                 "access": "public-read",
                 "headers": {
                     // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
                     "Cache-Control": "max-age=630720000, public",
-                    "Expires": new Date(Date.now() + 63072000000).toUTCString(),
+                    "Expires": new Date(Date.now() + 63072000000)
+                        .toUTCString(),
                     "Content-Encoding": "gzip"
                 }
             },
             "test": {
-                "upload": [
-                    {
-                        "src": "prod/**.*",
-                        "dest": "/"
-                    }
-                ]
+                "upload": [{
+                    "src": "prod/**.*",
+                    "dest": "/"
+                }]
             }
         }
     });
@@ -173,6 +182,10 @@ module.exports = function (grunt) {
                 file: newFile
             }))
         });
+
+    grunt.task.registerTask("panic", "nothing", function () {
+        console.log(pkg)
+    })
 
 
 

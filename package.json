@@ -33,5 +33,9 @@
     "grunt-shell": "~0.7.0",
     "grunt-sass": "~0.12.1",
     "grunt-s3": "^0.2.0-alpha.3"
+  },
+  "aws": {
+	"bucket": "grunter",
+	"credentials": "../aws.json"
   }
 }
