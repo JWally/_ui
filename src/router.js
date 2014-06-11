@@ -5,15 +5,17 @@ define([
     "jquery",
     "underscore",
     "backbone",
-    "views/index/index"
-], function ($, _, Backbone, HomeView) {
+    "views/index/index",
+    "views/error/e404"
+], function ($, _, Backbone, HomeView, E404) {
 
     //////////////////////////////////////////////////////////////////////
     "use strict";
     //////////////////////////////////////////////////////////////////////
     var AppRouter = Backbone.Router.extend({
             routes: {
-                "": "index"
+                "": "index",
+                "*actions": "404"
             }
         }),
 
@@ -30,9 +32,9 @@ define([
 
             ///////////////////////////////////////////////////////////////////
             ///////////////////////////////////////////////////////////////////
-            //  Default View:
-            //  Catch everything that doesn"t match
-            //  another route
+            //  Index View:
+            //  This is our primary landing page
+            //  offered @ root!
             ///////////////////////////////////////////////////////////////////
             app_router.on("route:index", function (
                 actions) {
@@ -44,6 +46,22 @@ define([
 
             });
 
+            ///////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////
+            //  Index View:
+            //  This is our primary landing page
+            //  offered @ root!
+            ///////////////////////////////////////////////////////////////////
+            app_router.on("route:404", function (
+                actions) {
+                if (!obj.e404) {
+                    obj.e404 = new E404();
+                }
+
+                obj.e404.render();
+
+            });
+            
             Backbone.history.start({
                 pushState: false
             });
