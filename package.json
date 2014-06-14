@@ -21,21 +21,22 @@
   },
   "homepage": "https://github.com/JWally/_ui",
   "devDependencies": {
+    "bower": "^1.3.5",
+    "connect": "*",
     "grunt": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-jsbeautifier": "*",
-    "connect": "*",
-    "serve-static": "*",
-    "bower": "~1.3.3",
-    "grunt-hogan": "~0.2.2-2",
     "grunt-contrib-requirejs": "~0.4.4",
-    "grunt-shell": "~0.7.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-hogan": "~0.2.2-2",
+    "grunt-jsbeautifier": "*",
+    "grunt-s3": "^0.2.0-alpha.3",
     "grunt-sass": "~0.12.1",
-    "grunt-s3": "^0.2.0-alpha.3"
+    "grunt-shell": "~0.7.0",
+    "serve-static": "*",
+    "hogan": "twitter/hogan.js"
   },
   "aws": {
-	"bucket": "grunter",
-	"credentials": "../aws.json"
+    "bucket": "grunter",
+    "credentials": "../aws.json"
   }
 }
