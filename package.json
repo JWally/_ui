@@ -23,7 +23,7 @@
   "devDependencies": {
     "bower": "^1.3.5",
     "connect": "*",
-    "grunt": "*",
+    "grunt": "~0.4.5",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-requirejs": "~0.4.4",
     "grunt-contrib-uglify": "*",
@@ -33,7 +33,7 @@
     "grunt-sass": "~0.12.1",
     "grunt-shell": "~0.7.0",
     "serve-static": "*",
-    "hogan": "twitter/hogan.js"
+    "hogan": "https://github.com/twitter/hogan.js/tarball/master"
   },
   "aws": {
     "bucket": "grunter",
