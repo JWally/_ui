@@ -33,7 +33,7 @@
     "grunt-sass": "~0.12.1",
     "grunt-shell": "~0.7.0",
     "serve-static": "*",
-    "hogan": "https://github.com/twitter/hogan.js/tarball/master"
+    "hogan.js": "~2.0.0"
   },
   "aws": {
     "bucket": "grunter",
