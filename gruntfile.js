@@ -107,7 +107,7 @@ module.exports = function (grunt) {
                 ].join("&&")
             },
             "dev": {
-                "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js optimize=none"
+                "command": "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.json optimize=none"
             }
         },
         "sass": {
