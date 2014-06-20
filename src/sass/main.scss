@@ -1,18 +1,8 @@
 /************************************************
-* ASSET VIEW
+* MAIN CSS 
 ************************************************/
-
-#menu{
-  background: #444; color: #fff;
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
 
-#menus{
-  background: #444; color: #fff;
-  li {
-	cursor: pointer;
-  }
-}
-
-#tabContainer{
-  height: 300px;
-}
