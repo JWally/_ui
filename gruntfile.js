@@ -125,6 +125,17 @@ module.exports = function (grunt) {
                 }
             }
         },
+        "htmlmin": {
+            "dist": {
+                "options": {
+                    "removeComments": true,
+                    "collapseWhitespace": true
+                },
+                "files": {
+                    'src/index.html': 'src/main.html'
+                }
+            }
+        },
         "s3": {
             "options": {
                 "key": "<%= aws.key %>",
@@ -153,12 +164,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-sass");
     grunt.loadNpmTasks("grunt-shell");
     grunt.loadNpmTasks("grunt-s3");
+    grunt.loadNpmTasks("grunt-contrib-htmlmin");
 
     grunt.registerTask("prod", [
         "jsbeautifier:default",
         "jshint",
         "hogan:web",
         "sass:prod",
+        "htmlmin:dist",
         "shell:prod"
     ]);
 
@@ -167,6 +180,7 @@ module.exports = function (grunt) {
         "jshint",
         "hogan:web",
         "sass:dev",
+        "htmlmin:dist",
         "shell:dev"
     ]);
 
