@@ -98,7 +98,7 @@ module.exports = function (grunt) {
         "shell": {
             "prod": {
                 "command": [
-                    "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.js",
+                    "node node_modules/grunt-contrib-requirejs/node_modules/requirejs/bin/r.js -o src/app.build.json",
                     "rm -rf prod",
                     "mkdir prod",
                     "gzip -9 -c src/index.html > prod/index.html",
