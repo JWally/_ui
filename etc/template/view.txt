@@ -11,11 +11,13 @@ define([
     "use strict";
     var {{name}} = Backbone.View.extend({
 
-        el: $("#somewhere"),
-
+        ////////////////////////////////////////////////////////
+        initialize: function(){
+        
+        },
+        ////////////////////////////////////////////////////////
         render: function () {
-            var rslt = templates["something"]({data: true});
-            this.$el.html(rslt);
+
         }
 
     });

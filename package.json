@@ -29,15 +29,10 @@
     "grunt-contrib-uglify": "*",
     "grunt-hogan": "~0.2.2-2",
     "grunt-jsbeautifier": "*",
-    "grunt-s3": "^0.2.0-alpha.3",
     "grunt-sass": "~0.12.1",
     "grunt-shell": "~0.7.0",
     "serve-static": "*",
     "hogan.js": "~2.0.0",
     "grunt-contrib-htmlmin": "~0.3.0"
-  },
-  "aws": {
-    "bucket": "grunter",
-    "credentials": "../aws.json"
   }
 }

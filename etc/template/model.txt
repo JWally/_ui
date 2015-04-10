@@ -10,7 +10,7 @@ define([
     "use strict";
 
     var {{name}} = Backbone.Model.extend({
-        "idAttribute": "_id",
+        ////////////////////////////////////////////////////////
         "initialize": function () {
 
         }
