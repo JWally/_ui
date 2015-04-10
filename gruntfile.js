@@ -1,17 +1,5 @@
 module.exports = function (grunt) {
-    // Initialize this because it tells us where
-    // our credentials file is stored...
-    var pkg = grunt.file.readJSON("package.json");
-
-    // If the file listed here exists, load it into the
-    // `aws` variable
-    if (grunt.file.exists(pkg.aws.credentials)) {
-        aws = grunt.file.readJSON(pkg.aws.credentials);
-    }
-
     grunt.initConfig({
-        "pkg": pkg,
-        "aws": aws,
         "jshint": {
             "files": [
                 "src/**/*.js",
@@ -30,7 +18,7 @@ module.exports = function (grunt) {
                 "noempty": true,
                 "nonew": true,
                 "trailing": true,
-                "maxlen": 80,
+                "maxlen": 100,
                 "white": true
             }
         },
@@ -40,6 +28,7 @@ module.exports = function (grunt) {
                     "gruntfile.js",
                     "src/js/**/*.js",
                     "src/**/*.html",
+                    "src/**/*.scss",
                     "!src/js/template/all.js"
                 ]
             },
@@ -73,7 +62,12 @@ module.exports = function (grunt) {
                     "space_before_conditional": true,
                     "space_in_paren": false,
                     "unescape_strings": false,
-                    "wrap_line_length": 70
+                    "wrap_line_length": 90
+                },
+                "css": {
+                    "fileTypes": [".scss"],
+                    "indentChar": " ",
+                    "indentSize": 4
                 }
             }
         },
@@ -135,27 +129,6 @@ module.exports = function (grunt) {
                     'src/index.html': 'src/main.html'
                 }
             }
-        },
-        "s3": {
-            "options": {
-                "key": "<%= aws.key %>",
-                "secret": "<%= aws.secret %>",
-                "bucket": "NOPER",
-                "access": "public-read",
-                "headers": {
-                    // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
-                    "Cache-Control": "max-age=630720000, public",
-                    "Expires": new Date(Date.now() + 63072000000)
-                        .toUTCString(),
-                    "Content-Encoding": "gzip"
-                }
-            },
-            "test": {
-                "upload": [{
-                    "src": "prod/**.*",
-                    "dest": "/"
-                }]
-            }
         }
     });
     grunt.loadNpmTasks('grunt-hogan');
@@ -163,7 +136,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-sass");
     grunt.loadNpmTasks("grunt-shell");
-    grunt.loadNpmTasks("grunt-s3");
     grunt.loadNpmTasks("grunt-contrib-htmlmin");
 
     grunt.registerTask("prod", [
@@ -196,11 +168,5 @@ module.exports = function (grunt) {
                 file: newFile
             }))
         });
-
-    grunt.task.registerTask("panic", "nothing", function () {
-        console.log(pkg)
-    })
-
-
 
 }
